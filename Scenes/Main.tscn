@@ -16,7 +16,7 @@ position = Vector2( 500, 272 )
 position = Vector2( 500, 350 )
 
 [node name="Platform" type="StaticBody2D" parent="Geometry"]
-scale = Vector2( 10, 1 )
+scale = Vector2( 50, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Platform"]
 shape = SubResource( 1 )
@@ -27,4 +27,4 @@ scale = Vector2( 1.24375, 1 )
 texture = ExtResource( 2 )
 
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 745, 231 )
+position = Vector2( 569, 312 )

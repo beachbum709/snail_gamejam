@@ -1,43 +1,98 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://Assets/smolblockboi_froggies_spritesheet.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Enemy sprite/Placeholder_starfish/Idle 02.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Enemy sprite/Placeholder_starfish/Idle 06.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Enemy sprite/Placeholder_starfish/Idle 01.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Enemy sprite/Placeholder_starfish/Idle 03.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Enemy sprite/Placeholder_starfish/Idle 05.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Enemy sprite/Placeholder_starfish/Idle 07.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Enemy sprite/Placeholder_starfish/Idle 08.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Enemy sprite/Placeholder_starfish/Idle 04.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Enemy_Snail.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 6, 4.5 )
-
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 1 )
-region = Rect2( 32, 0, 16, 18 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 1 )
-region = Rect2( 48, 0, 16, 18 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 1 )
-region = Rect2( 64, 0, 16, 18 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 1 )
-region = Rect2( 80, 0, 16, 18 )
+extents = Vector2( 7.16667, 6.33333 )
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 1 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "default",
-"speed": 5.0
+"speed": 10.0
 } ]
+
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0.141935, 0.819355 )
+colors = PoolColorArray( 0.982422, 0.602501, 0.963129, 1, 0.994141, 0.49707, 0.724247, 1 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+emission_shape = 5
+emission_ring_radius = 45.0
+emission_ring_inner_radius = 20.0
+emission_ring_height = 1.0
+emission_ring_axis = Vector3( 0, 0, 1 )
+flag_align_y = true
+flag_disable_z = true
+spread = 62.82
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = -70.0
+color_ramp = SubResource( 8 )
+
+[sub_resource type="Animation" id=10]
+resource_name = "spawn"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D/Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 2.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Particles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1, 2.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="Enemy_Snail" type="KinematicBody2D"]
 position = Vector2( 13.392, 8.845 )
 scale = Vector2( 3, 3 )
+script = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 2.5 )
+position = Vector2( 0.0359998, 0.718333 )
+scale = Vector2( 0.75, 0.75 )
 shape = SubResource( 1 )
 
-[node name="Sprite" type="AnimatedSprite" parent="."]
+[node name="Sprite" type="AnimatedSprite" parent="CollisionShape2D"]
+position = Vector2( -0.0359998, -0.718333 )
+scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 6 )
-frame = 3
+frame = 2
 playing = true
+
+[node name="Particles2D" type="Particles2D" parent="."]
+emitting = false
+amount = 500
+one_shot = true
+process_material = SubResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/spawn = SubResource( 10 )

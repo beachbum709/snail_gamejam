@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/smolblockboi_froggies_spritesheet.png-6760c89c1fe122a9ba9442ab5394b5fb.stex"
+path="res://.import/smolblockboi_froggies_spritesheet (2).png-184a5108353e1b8e981feeadde0ccc7e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/smolblockboi_froggies_spritesheet.png"
-dest_files=[ "res://.import/smolblockboi_froggies_spritesheet.png-6760c89c1fe122a9ba9442ab5394b5fb.stex" ]
+source_file="res://Assets/Enemy sprite/smolblockboi_froggies_spritesheet (2).png"
+dest_files=[ "res://.import/smolblockboi_froggies_spritesheet (2).png-184a5108353e1b8e981feeadde0ccc7e.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
