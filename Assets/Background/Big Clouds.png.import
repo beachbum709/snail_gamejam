@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/square-16.png-425bf7e6a04567ab75352940add75a4a.stex"
+path="res://.import/Big Clouds.png-32daaeeac910e9be0ba7fdec3f220dff.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/square-16.png"
-dest_files=[ "res://.import/square-16.png-425bf7e6a04567ab75352940add75a4a.stex" ]
+source_file="res://Assets/Background/Big Clouds.png"
+dest_files=[ "res://.import/Big Clouds.png-32daaeeac910e9be0ba7fdec3f220dff.stex" ]
 
 [params]
 
