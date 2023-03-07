@@ -131,7 +131,7 @@ visible = false
 position = Vector2( -0.285714, -4 )
 scale = Vector2( 1.71429, 1.71429 )
 frames = SubResource( 6 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
