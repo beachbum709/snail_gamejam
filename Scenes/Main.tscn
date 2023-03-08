@@ -1212,7 +1212,6 @@ texture = ExtResource( 4 )
 position = Vector2( 468, 534 )
 scale = Vector2( 5.48235, 14.4 )
 frames = SubResource( 49 )
-frame = 3
 playing = true
 
 [node name="Cloud animations" type="AnimationPlayer" parent="Geometry"]
