@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/smolblockboi_froggies_spritesheet.png-f86bb4deb79e4f237256b5c316b40733.stex"
+path="res://.import/Anticipation 03.png-71262b6785bf4ea23671e9c9598d31b7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Enemy sprite/smolblockboi_froggies_spritesheet.png"
-dest_files=[ "res://.import/smolblockboi_froggies_spritesheet.png-f86bb4deb79e4f237256b5c316b40733.stex" ]
+source_file="res://Assets/Enemy sprite/Enemy1/attack1/Anticipation 03.png"
+dest_files=[ "res://.import/Anticipation 03.png-71262b6785bf4ea23671e9c9598d31b7.stex" ]
 
 [params]
 
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

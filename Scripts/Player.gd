@@ -1,11 +1,13 @@
 extends KinematicBody2D
 
 
-const gravity = 5
+
+const gravity = 25
+var damaged
 var is_attacking = false
-var jumpforce = 200
+var jumpforce = 1000
 var velocity = Vector2()
-var movespeed = 150
+var movespeed = 300
 var jump_counter = 0
 var bullet_speed = 2000
 var bullet = preload("res://Scenes/Bullet.tscn")
@@ -25,25 +27,24 @@ func _input(event):
 		ap.play("attack1")
 
 func _physics_process(delta):
-	if Input.is_action_pressed("left") and is_on_floor() and not Input.is_action_pressed("right"):
+	if Input.is_action_pressed("left") and is_on_floor() and not Input.is_action_pressed("right") and is_on_floor() and not damaged:
 		velocity.x = -movespeed
-	if Input.is_action_pressed("right") and is_on_floor() and not Input.is_action_pressed("left"):
+	if Input.is_action_pressed("right") and is_on_floor() and not Input.is_action_pressed("left") and is_on_floor() and not damaged:
 		velocity.x = movespeed
 		
 	
 	move_and_slide(velocity,Vector2.UP)
 	if is_on_floor():
 		velocity.x = lerp(velocity.x,0,0.2)
-	if velocity.y <= 200:
+		movespeed = 300
+	if velocity.y <= 400:
 		velocity.y = velocity.y + gravity
 	if is_on_wall():
-		velocity.x = lerp(-velocity.x/3,0,0.2)
+		velocity.x = lerp(-velocity.x/3,0,0.4)
 	if is_on_ceiling():
-		velocity.y = 50
+		velocity.y = gravity
 	
-	print(velocity.x)
 	
-
 
 
 func animation_handler():
@@ -60,7 +61,7 @@ func animation_handler():
 		$Sprite.flip_h = false
 		ap.play("RUN")
 	else:
-		if not is_attacking:
+		if not is_attacking or is_on_floor():
 			ap.play("IDLE")
 	
 	#JUMPING
@@ -73,28 +74,29 @@ func animation_handler():
 
 func jump():
 	if Input.is_action_pressed("jump") and is_on_floor():
+		
 		movespeed = 0
-		jump_counter += 5
+		jump_counter += 10
 	elif Input.is_action_just_released("jump") and is_on_floor():
 		if Input.is_action_pressed("left") or Input.is_action_pressed("right"):
-			if jump_counter >= 250:
-				velocity.y = -250
-				velocity.x = -250
-			elif jump_counter <= 70:
-				velocity.y = -70
-				velocity.x = -70
+			if jump_counter >= jumpforce:
+				velocity.y = -jumpforce
+				movespeed = jumpforce - 200
+			elif jump_counter <= 350:
+				velocity.y = -350
+				movespeed = 350
 			else:
 				velocity.y = -jump_counter
-				velocity.x = -jump_counter
+				movespeed = jump_counter - 100
 		else:
-			if jump_counter >= 250:
-				velocity.y = -250
-			elif jump_counter <= 70:
-				velocity.y = -70
+			if jump_counter >= jumpforce:
+				velocity.y = -jumpforce
+			elif jump_counter <= 350:
+				velocity.y = -350
 			else:
 				velocity.y = -jump_counter
+		print(movespeed,velocity.y)
 		jump_counter = 0
-		movespeed = 150
 
 #Attacking logic
 func _on_Weapon_hitbox_body_entered(body):
