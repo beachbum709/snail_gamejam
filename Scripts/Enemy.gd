@@ -22,7 +22,7 @@ func _process(delta):
 		is_dead = true
 		var snail_instance = snail.instance()
 		get_parent().add_child(snail_instance)
-		snail_instance.position = $CollisionShape2D.global_position
+		snail_instance.position = $CollisionShape2D.global_position - Vector2(0,10)
 		is_hit = false
 	
 
@@ -63,7 +63,7 @@ func _on_Player_Detection_body_exited(body):
 	if body.is_in_group("Player"):
 		is_attacking = false
 		$"Sprite1/Attack effects".visible = false
-		$Hitbox/CollisionShape2D.disabled = true
+		$Hitbox/CollisionShape2D.set_deferred("disabled", true)
 
 
 func _on_Hitbox_body_entered(body):
