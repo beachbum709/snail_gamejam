@@ -238,14 +238,14 @@ frames = SubResource( 12 )
 visible = false
 position = Vector2( 20, -10 )
 frames = SubResource( 13 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="Interact2" type="AnimatedSprite" parent="Sprite"]
 visible = false
 position = Vector2( -20, -10 )
 frames = SubResource( 13 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="Hitbox" type="Area2D" parent="."]

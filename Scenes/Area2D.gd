@@ -11,5 +11,5 @@ func _on_Area2D_body_entered(body):
 func _on_Area2D_body_exited(body):
 	if body.is_in_group("Player"):
 		var current_camera = get_parent()
-		current_camera.current = false
+		current_camera.set_deferred("current", false)
 
