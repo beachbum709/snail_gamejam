@@ -5,7 +5,8 @@ extends KinematicBody2D
 const gravity = 25
 var damaged
 var is_attacking = false
-var jumpforce = 1000
+var superjump = false
+var jumpforce = 1100
 var velocity = Vector2()
 var movespeed = 300
 var jump_counter = 0
@@ -20,6 +21,7 @@ onready var ap = $AnimationPlayer
 func _process(delta):
 	animation_handler()
 	jump()	
+	interaction()
 
 func _input(event):
 	if Input.is_action_just_pressed("fire") and not is_on_floor():
@@ -37,13 +39,19 @@ func _physics_process(delta):
 	if is_on_floor():
 		velocity.x = lerp(velocity.x,0,0.2)
 		movespeed = 300
-	if velocity.y <= 400:
+		if ap.current_animation == "attack1":
+			ap.play("IDLE")
+			$"Sprite/Weapn Effects".visible = false
+			$Weapon_hitbox/CollisionShape2D.disabled = true
+	if velocity.y <= 600:
 		velocity.y = velocity.y + gravity
 	if is_on_wall():
 		velocity.x = lerp(-velocity.x/3,0,0.4)
 	if is_on_ceiling():
 		velocity.y = gravity
 	
+	if Input.is_action_pressed("cheater"):
+		velocity.y = -500
 	
 
 
@@ -61,7 +69,7 @@ func animation_handler():
 		$Sprite.flip_h = false
 		ap.play("RUN")
 	else:
-		if not is_attacking or is_on_floor():
+		if not is_attacking and is_on_floor():
 			ap.play("IDLE")
 	
 	#JUMPING
@@ -73,6 +81,7 @@ func animation_handler():
 		ap.play("Jump_UP")
 
 func jump():
+	jumpforce = 3000 if superjump else 1100
 	if Input.is_action_pressed("jump") and is_on_floor():
 		
 		movespeed = 0
@@ -95,7 +104,6 @@ func jump():
 				velocity.y = -350
 			else:
 				velocity.y = -jump_counter
-		print(movespeed,velocity.y)
 		jump_counter = 0
 
 #Attacking logic
@@ -104,3 +112,19 @@ func _on_Weapon_hitbox_body_entered(body):
 		body.is_hit = true
 func _on_AnimationPlayer_animation_finished(attack1):
 	is_attacking = false
+
+func interaction():
+	var collider = $Interact.get_collider()
+	var collider2 = $Interact2.get_collider()
+	if collider != null and collider.is_in_group("Interactable") and $Sprite/Interact2.visible == false:
+		$Sprite/Interact.visible = true
+		if Input.is_action_just_pressed("interact"):
+			collider.interact()
+	elif collider2 != null and collider2.is_in_group("Interactable") and $Sprite/Interact.visible == false:
+		$Sprite/Interact2.visible = true
+		if Input.is_action_just_pressed("interact"):
+			collider.interact()
+	else:
+		$Sprite/Interact.visible = false
+		$Sprite/Interact2.visible = false
+	

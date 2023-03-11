@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Water Reflect Big 01.png-c75726c55a60e231f52ec3124ee69ce2.stex"
+path="res://.import/Dead Ground 04.png-b549a67fca16c96bc50006e646a97a5b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Background/Water Reflect Big 01.png"
-dest_files=[ "res://.import/Water Reflect Big 01.png-c75726c55a60e231f52ec3124ee69ce2.stex" ]
+source_file="res://Assets/Enemy sprite/Enemy1/DIE/Dead Ground 04.png"
+dest_files=[ "res://.import/Dead Ground 04.png-b549a67fca16c96bc50006e646a97a5b.stex" ]
 
 [params]
 

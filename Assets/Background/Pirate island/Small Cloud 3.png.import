@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Water Reflect Big 03.png-a5bd616283e796c2746c4cf76f5f99f4.stex"
+path="res://.import/Small Cloud 3.png-e479dc9eac836fafc0bfe5a2e5bb2ff8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Background/Water Reflect Big 03.png"
-dest_files=[ "res://.import/Water Reflect Big 03.png-a5bd616283e796c2746c4cf76f5f99f4.stex" ]
+source_file="res://Assets/Background/Pirate island/Small Cloud 3.png"
+dest_files=[ "res://.import/Small Cloud 3.png-e479dc9eac836fafc0bfe5a2e5bb2ff8.stex" ]
 
 [params]
 

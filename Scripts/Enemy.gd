@@ -17,12 +17,13 @@ func _ready():
 
 func _process(delta):
 	if is_hit:
+		ap.stop()
 		ap.play("die")
-		is_hit = false
 		is_dead = true
 		var snail_instance = snail.instance()
 		get_parent().add_child(snail_instance)
 		snail_instance.position = $CollisionShape2D.global_position
+		is_hit = false
 	
 
 func _physics_process(delta):
@@ -30,7 +31,7 @@ func _physics_process(delta):
 		move_character()
 		detect_turn_around()
 		animation_handler()
-		print(rotation_degrees)
+
 func _on_AnimationPlayer_animation_finished(die):
 	queue_free()
 
@@ -56,7 +57,8 @@ func animation_handler():
 func _on_Player_Detection_body_entered(body):
 	if body.is_in_group("Player"):
 		is_attacking = true
-		ap.play("Attack")
+		if not is_dead:
+			ap.play("Attack")
 func _on_Player_Detection_body_exited(body):
 	if body.is_in_group("Player"):
 		is_attacking = false
@@ -73,10 +75,6 @@ func _on_Hitbox_body_entered(body):
 		elif rotation_degrees >= 90:
 			body.velocity.x = 500	
 			body.velocity.y = -500
-			
-		
-
-
 func _on_Hitbox_body_exited(body):
 	if body.is_in_group("Player"):
 		body.damaged = false

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Big Clouds.png-32daaeeac910e9be0ba7fdec3f220dff.stex"
+path="res://.import/Exclamation In 01.png-7f351f5e4fb6ce6dd7f04521c8888acb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Background/Big Clouds.png"
-dest_files=[ "res://.import/Big Clouds.png-32daaeeac910e9be0ba7fdec3f220dff.stex" ]
+source_file="res://Assets/Player Sprite/Interact/Exclamation In 01.png"
+dest_files=[ "res://.import/Exclamation In 01.png-7f351f5e4fb6ce6dd7f04521c8888acb.stex" ]
 
 [params]
 
