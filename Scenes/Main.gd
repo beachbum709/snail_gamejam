@@ -25,3 +25,7 @@ func _on_Player_respawner_body_entered(body):
 
 func _on_Respawn_timer_timeout():
 	player.global_position = Vector2(350,-1248.97)
+
+
+func _on_Start_respawner_body_entered(body):
+	player.global_position = Vector2(0,0)

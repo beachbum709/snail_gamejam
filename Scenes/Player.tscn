@@ -35,7 +35,7 @@
 [ext_resource path="res://Assets/Player Sprite/Interact/Exclamation In 01.png" type="Texture" id=33]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8.75, 13.5 )
+extents = Vector2( 8.75, 13 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -147,6 +147,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=5]
 resource_name = "RUN"
+length = 1.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -216,12 +217,12 @@ tracks/3/keys = {
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 18.5, 11.75 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=["Player"]]
 scale = Vector2( 2, 2 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.75, -1.5 )
+position = Vector2( -0.75, -2 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
@@ -238,14 +239,13 @@ frames = SubResource( 12 )
 visible = false
 position = Vector2( 20, -10 )
 frames = SubResource( 13 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="Interact2" type="AnimatedSprite" parent="Sprite"]
 visible = false
 position = Vector2( -20, -10 )
 frames = SubResource( 13 )
-frame = 3
 playing = true
 
 [node name="Hitbox" type="Area2D" parent="."]
@@ -254,6 +254,7 @@ playing = true
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 2.0
 anims/IDLE = SubResource( 4 )
 anims/Jump_Charge = SubResource( 9 )
 anims/Jump_FALL = SubResource( 7 )
@@ -281,5 +282,9 @@ enabled = true
 cast_to = Vector2( -30, 0 )
 collision_mask = 3
 
+[node name="Running_effects_Timer" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="Weapon_hitbox" to="." method="_on_Weapon_hitbox_body_entered"]
+[connection signal="timeout" from="Running_effects_Timer" to="." method="_on_Running_effects_Timer_timeout"]

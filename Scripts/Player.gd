@@ -8,10 +8,13 @@ var is_attacking = false
 var superjump = false
 var jumpforce = 1100
 var velocity = Vector2()
-var movespeed = 150
+var movespeed
 var jump_counter = 0
-var bullet_speed = 2000
-var bullet = preload("res://Scenes/Bullet.tscn")
+var jump_effects = preload("res://Scenes/Jump_effects.tscn")
+var landing_effects = preload("res://Scenes/Landing_effects.tscn")
+var running_effects = preload("res://Scenes/Running_effects.tscn")
+var run_effect_bool = false
+var on_ground = false
 
 onready var ap = $AnimationPlayer
 
@@ -22,7 +25,6 @@ func _process(delta):
 	animation_handler()
 	jump()	
 	interaction()
-
 func _input(event):
 	if Input.is_action_just_pressed("fire") and not is_on_floor():
 		is_attacking = true
@@ -38,11 +40,19 @@ func _physics_process(delta):
 	move_and_slide(velocity,Vector2.UP)
 	if is_on_floor():
 		velocity.x = lerp(velocity.x,0,0.2)
-		movespeed = 300
+		movespeed = 200
 		if ap.current_animation == "attack1":
 			ap.play("IDLE")
 			$"Sprite/Weapn Effects".visible = false
 			$Weapon_hitbox/CollisionShape2D.disabled = true
+		if not on_ground:
+			var landing_instance = landing_effects.instance()
+			get_parent().add_child(landing_instance)
+			landing_instance.global_position = global_position + Vector2(0,10)
+		on_ground = true
+	else:
+		on_ground = false
+		
 	if velocity.y <= 600:
 		velocity.y = velocity.y + gravity
 	if is_on_wall():
@@ -50,9 +60,14 @@ func _physics_process(delta):
 	if is_on_ceiling():
 		velocity.y = gravity
 	
-	if Input.is_action_pressed("cheater"):
-		velocity.y = -500
+
 	
+	if Input.is_action_just_pressed("right"):
+		$Running_effects_Timer.start()
+		run_effect_bool = false
+	if Input.is_action_just_pressed("left"):
+		$Running_effects_Timer.start()
+		run_effect_bool = true
 
 
 func animation_handler():
@@ -71,6 +86,7 @@ func animation_handler():
 	else:
 		if not is_attacking and is_on_floor():
 			ap.play("IDLE")
+			$Running_effects_Timer.stop()
 	
 	#JUMPING
 	if Input.is_action_pressed("jump") and is_on_floor():
@@ -87,6 +103,9 @@ func jump():
 		movespeed = 0
 		jump_counter += 10
 	elif Input.is_action_just_released("jump") and is_on_floor():
+		var effects = jump_effects.instance()
+		get_parent().add_child(effects)
+		effects.global_position = global_position + Vector2(0,15)
 		if Input.is_action_pressed("left") or Input.is_action_pressed("right"):
 			if jump_counter >= jumpforce:
 				velocity.y = -jumpforce
@@ -128,3 +147,14 @@ func interaction():
 		$Sprite/Interact.visible = false
 		$Sprite/Interact2.visible = false
 	
+
+
+func _on_Running_effects_Timer_timeout():
+	var running_instance = running_effects.instance()
+	get_parent().add_child(running_instance)
+	if run_effect_bool:
+		running_instance.flip_h = true
+		running_instance.global_position = global_position + Vector2(10,4)
+	else:
+		running_instance.flip_h = false
+		running_instance.global_position = global_position + Vector2(-10,4)
