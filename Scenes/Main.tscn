@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=80 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Background/Terrain (32x32).png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Scenes/Area2D.gd" type="Script" id=14]
 [ext_resource path="res://Scenes/Capybara.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Assets/Background/CaveTileset.png" type="Texture" id=16]
+[ext_resource path="res://Scenes/pause menu.tscn" type="PackedScene" id=17]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -1608,7 +1609,6 @@ tile_data = PoolIntArray( -2752505, 8, 0, -2686969, 8, 0, -2621433, 8, 0, -26214
 
 [node name="Boss1map" type="TileMap" parent="Geometry"]
 position = Vector2( 0, -9.15527e-05 )
-scale = Vector2( 1, 1 )
 tile_set = SubResource( 53 )
 cell_size = Vector2( 16, 16 )
 format = 1
@@ -1619,7 +1619,6 @@ position = Vector2( -500, -1000 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Geometry/Boss1map/Area2D"]
 position = Vector2( 19.6666, -8.3335 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 64 )
 
 [node name="Background image" type="Sprite" parent="Geometry"]
@@ -1782,6 +1781,8 @@ position = Vector2( 50, -1300 )
 [node name="Capybara" parent="." instance=ExtResource( 15 )]
 position = Vector2( 400, -1248.97 )
 scale = Vector2( -1, 1 )
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 17 )]
 
 [connection signal="body_entered" from="Geometry/Boss1map/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Cameras/0/Area2D" to="Cameras/0/Area2D" method="_on_Area2D_body_entered"]
