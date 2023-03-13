@@ -110,7 +110,12 @@ func animation_handler():
 		ap.play("Jump_UP")
 
 func jump():
-	jumpforce = 3000 if superjump else 1100
+	if superjump:
+		jumpforce = 3000
+		$Particles2D.emitting = true
+	else:
+		jumpforce = 1100
+		$Particles2D.emitting = false
 	if Input.is_action_pressed("jump") and is_on_floor():
 		
 		movespeed = 0
