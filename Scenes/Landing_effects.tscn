@@ -34,6 +34,7 @@ tracks/0/keys = {
 [node name="Jump_effects" type="AnimatedSprite"]
 visible = false
 scale = Vector2( 2, 2 )
+z_index = 2
 frames = SubResource( 1 )
 script = ExtResource( 7 )
 

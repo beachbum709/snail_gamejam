@@ -16,15 +16,28 @@ var running_effects = preload("res://Scenes/Running_effects.tscn")
 var run_effect_bool = false
 var on_ground = false
 
+var win_condition = false
+onready var key_sprite = $Sprite/Key_unlocked
+
 onready var ap = $AnimationPlayer
 
-
+func _ready():
+	key_sprite.visible = false
 
 	
 func _process(delta):
 	animation_handler()
 	jump()	
 	interaction()
+	if win_condition:
+		key_sprite.visible = true
+	#debugging
+	if Input.is_action_pressed("cheater"):
+		velocity.y -= 50
+	if Input.is_action_pressed("cheater2"):
+		velocity.x -= 50
+	if Input.is_action_pressed("cheater3"):
+		velocity.x += 50
 func _input(event):
 	if Input.is_action_just_pressed("fire") and not is_on_floor():
 		is_attacking = true
@@ -129,6 +142,8 @@ func jump():
 func _on_Weapon_hitbox_body_entered(body):
 	if body.is_in_group("Enemy"):
 		body.is_hit = true
+	if body.is_in_group("Boss"):
+		body.health -= 10
 func _on_AnimationPlayer_animation_finished(attack1):
 	is_attacking = false
 

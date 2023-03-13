@@ -1,35 +1,36 @@
 extends KinematicBody2D
 
 var rng = RandomNumberGenerator.new()
+var key = preload("res://Scenes/Key.tscn")
 onready var ap = $AnimationPlayer
 onready var player = $"../Player"
 var velocity = Vector2()
 var gravity = 25
 var speed = 15
-var health = 1000
-var will_fall = false
+var health = 100
 var spawn_bool = false
 var is_attacking = false
 var flip_bool = false
 var attack_finished = false
 var special_attack = false
+var is_dead = false
 
 func _ready():
 	ap.play("Spawn")
 	
 
 func _process(delta):
-	attack()
-	animation_handler()
+	if not is_dead:
+		attack()
+		animation_handler()
+	die()
 
 func _physics_process(delta):
 	if velocity.y <= 700:
 		velocity.y = velocity.y + gravity
 		
-	if not will_fall and spawn_bool and not is_attacking and not special_attack:
+	if spawn_bool and not is_attacking and not special_attack and not is_dead:
 		velocity.x = position.direction_to(player.position).x * speed
-	elif will_fall:
-		pass # stop motion
 	
 	move_and_slide(velocity, Vector2.UP)
 	
@@ -82,8 +83,6 @@ func _on_front_Detection_body_exited(body):
 			$Timers/attack1_finished.start()
 
 
-
-
 func _on_Attack2_detection_body_entered(body):
 	if spawn_bool:
 		var random = rng.randf_range(0,4)
@@ -101,3 +100,21 @@ func _on_Particle_hitbox_body_entered(body):
 
 func _on_attack1_finished_timeout():
 	attack_finished = true
+
+
+func die():
+	if health <= 0:
+		is_dead = true
+		ap.play("Die")
+		$Timers/Die_Timer.start()
+		$"../Healthbar".queue_free()
+		var key_instance = key.instance()
+		get_parent().add_child(key_instance)
+		key_instance.global_position = global_position
+		set_process(false)
+		
+	
+
+
+func _on_Die_Timer_timeout():
+	queue_free()

@@ -1,0 +1,245 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Assets/Chest/1.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Chest.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Chest/Unlocked/6.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Chest/Unlocked/4.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Chest/Unlocked/5.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Chest/Unlocked/8.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Chest/Unlocked/7.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Chest/Unlocked/3.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Chest/Unlocked/1.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Chest/Unlocked/2.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Chest/Letters/23.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Chest/Letters/9.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Chest/Letters/14.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Chest/Letters/21.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Chest/Letters/15.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Chest/Letters/25.png" type="Texture" id=16]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 13.5, 127.5 )
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Letters/Y:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Letters/O:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Letters/U:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Letters/W:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Letters/I:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Letters/N:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "You_Win"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 5, 6, 7, 8 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "You_Win_Letters"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Letters/Y:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Letters/O:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Letters/U:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Letters/W:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Letters/I:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Letters/N:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="Chest" type="KinematicBody2D" groups=["Interactable"]]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.5, -111.5 )
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 6 )
+anims/You_Win = SubResource( 4 )
+anims/You_Win_Letters = SubResource( 5 )
+
+[node name="Letters" type="Node2D" parent="."]
+visible = false
+
+[node name="Y" type="Sprite" parent="Letters"]
+position = Vector2( -16, -40 )
+texture = ExtResource( 16 )
+
+[node name="O" type="Sprite" parent="Letters"]
+position = Vector2( 0, -40 )
+texture = ExtResource( 15 )
+
+[node name="U" type="Sprite" parent="Letters"]
+position = Vector2( 16, -40 )
+texture = ExtResource( 14 )
+
+[node name="W" type="Sprite" parent="Letters"]
+position = Vector2( -16, -21 )
+texture = ExtResource( 11 )
+
+[node name="I" type="Sprite" parent="Letters"]
+position = Vector2( 0, -21 )
+texture = ExtResource( 12 )
+
+[node name="N" type="Sprite" parent="Letters"]
+position = Vector2( 16, -21 )
+texture = ExtResource( 13 )
+
+[node name="Win_timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="Win_timer" to="." method="_on_Win_timer_timeout"]
