@@ -31,13 +31,6 @@ func _process(delta):
 	interaction()
 	if win_condition:
 		key_sprite.visible = true
-	#debugging
-	if Input.is_action_pressed("cheater"):
-		velocity.y -= 50
-	if Input.is_action_pressed("cheater2"):
-		velocity.x -= 50
-	if Input.is_action_pressed("cheater3"):
-		velocity.x += 50
 func _input(event):
 	if Input.is_action_just_pressed("fire") and not is_on_floor():
 		is_attacking = true

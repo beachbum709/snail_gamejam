@@ -2166,7 +2166,6 @@ offset = Vector2( 224.961, 94.0929 )
 position = Vector2( 500, 408.59 )
 scale = Vector2( 1.81961, 5.1 )
 frames = SubResource( 49 )
-frame = 1
 playing = true
 
 [node name="Clouds" type="Node2D" parent="Geometry"]
@@ -2306,7 +2305,7 @@ shape = SubResource( 80 )
 [node name="Boss_Skull" type="AnimatedSprite" parent="Geometry"]
 position = Vector2( 230.667, -1044.67 )
 frames = SubResource( 82 )
-frame = 4
+frame = 7
 playing = true
 
 [node name="Trees" type="Node2D" parent="Geometry"]
@@ -2315,21 +2314,21 @@ playing = true
 position = Vector2( 796, 308.667 )
 z_index = 4
 frames = SubResource( 89 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="Treetop" type="AnimatedSprite" parent="Geometry/Trees"]
 position = Vector2( 457.333, 212 )
 z_index = 4
 frames = SubResource( 89 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="Treetop3" type="AnimatedSprite" parent="Geometry/Trees"]
 position = Vector2( 651.333, 36.6667 )
 z_index = 4
 frames = SubResource( 89 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="trees" type="TileMap" parent="Geometry/Trees"]
@@ -2342,48 +2341,48 @@ tile_data = PoolIntArray( -7667659, 7, 0, -7667656, 7, 0, -7667649, 7, 0, -76676
 [node name="backtree_normal" type="AnimatedSprite" parent="Geometry/Trees"]
 position = Vector2( 499.333, 256.667 )
 frames = SubResource( 90 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="backtree_normal2" type="AnimatedSprite" parent="Geometry/Trees"]
 position = Vector2( 483.601, 238.86 )
 z_index = -1
 frames = SubResource( 90 )
-frame = 1
 playing = true
 
 [node name="backtree_normal4" type="AnimatedSprite" parent="Geometry/Trees"]
 position = Vector2( 568.667, -50.6667 )
 z_index = -1
 frames = SubResource( 90 )
+frame = 3
 playing = true
 
 [node name="backtree_normal5" type="AnimatedSprite" parent="Geometry/Trees"]
 position = Vector2( 628, -328 )
 z_index = -1
 frames = SubResource( 90 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="backtree_normal6" type="AnimatedSprite" parent="Geometry/Trees"]
 position = Vector2( 322, -473.333 )
 z_index = -1
 frames = SubResource( 90 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="backtree_normal7" type="AnimatedSprite" parent="Geometry/Trees"]
 position = Vector2( 389.333, -453.333 )
 z_index = -1
 frames = SubResource( 90 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="backtree_normal11" type="AnimatedSprite" parent="Geometry/Trees"]
 position = Vector2( 531.333, -801.333 )
 z_index = -1
 frames = SubResource( 90 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="backtree_normal8" type="AnimatedSprite" parent="Geometry/Trees"]
@@ -2391,7 +2390,7 @@ position = Vector2( 568.667, -479.333 )
 scale = Vector2( 1.15625, 1.15625 )
 z_index = -1
 frames = SubResource( 90 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="backtree_normal9" type="AnimatedSprite" parent="Geometry/Trees"]
@@ -2399,7 +2398,7 @@ position = Vector2( 559.333, -453.333 )
 scale = Vector2( 0.932291, 0.869792 )
 z_index = -1
 frames = SubResource( 90 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="backtree_normal10" type="AnimatedSprite" parent="Geometry/Trees"]
@@ -2407,28 +2406,25 @@ position = Vector2( 582.667, -453.333 )
 scale = Vector2( 0.932291, 0.869792 )
 z_index = -1
 frames = SubResource( 90 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="backtree_normal3" type="AnimatedSprite" parent="Geometry/Trees"]
 position = Vector2( 413.883, 238.86 )
 z_index = -1
 frames = SubResource( 90 )
-frame = 1
 playing = true
 
 [node name="backtree_normal12" type="AnimatedSprite" parent="Geometry/Trees"]
 position = Vector2( 493.333, -82.6667 )
 z_index = -1
 frames = SubResource( 91 )
-frame = 1
 playing = true
 
 [node name="backtree_normal13" type="AnimatedSprite" parent="Geometry/Trees"]
 position = Vector2( 269.333, -976 )
 z_index = -1
 frames = SubResource( 91 )
-frame = 1
 playing = true
 
 [node name="Chest on boat" type="Sprite" parent="Geometry"]
@@ -2580,6 +2576,7 @@ root_node = NodePath("../..")
 
 [node name="Node2D" parent="." instance=ExtResource( 22 )]
 position = Vector2( -71, -3718 )
+frame = 4
 
 [node name="Chest" parent="." instance=ExtResource( 31 )]
 position = Vector2( 1618, -3415 )
