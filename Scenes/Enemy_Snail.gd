@@ -12,6 +12,8 @@ func _physics_process(delta):
 	if velocity.y <= 200:
 		velocity.y = velocity.y + gravity
 	move_and_slide(velocity,Vector2.UP)
+	if not $AudioStreamPlayer2D.is_playing():
+		$AudioStreamPlayer2D.play()
 
 
 

@@ -62,14 +62,16 @@ func _physics_process(delta):
 			var landing_instance = landing_effects.instance()
 			get_parent().add_child(landing_instance)
 			landing_instance.global_position = global_position + Vector2(0,10)
+			$Audio/Land.play()
 		on_ground = true
 	else:
 		on_ground = false
 		
 	if velocity.y <= 600:
 		velocity.y = velocity.y + gravity
-	if is_on_wall():
+	if is_on_wall() and not is_on_floor():
 		velocity.x = lerp(-velocity.x/3,0,0.4)
+		$Audio/Land.play()
 	if is_on_ceiling():
 		velocity.y = gravity
 	
@@ -121,6 +123,7 @@ func jump():
 		movespeed = 0
 		jump_counter += 10
 	elif Input.is_action_just_released("jump") and is_on_floor():
+		$Audio/Jump.play()
 		var effects = jump_effects.instance()
 		get_parent().add_child(effects)
 		effects.global_position = global_position + Vector2(0,15)
@@ -147,8 +150,10 @@ func jump():
 func _on_Weapon_hitbox_body_entered(body):
 	if body.is_in_group("Enemy"):
 		body.is_hit = true
+		$Audio/Hit.play()
 	if body.is_in_group("Boss"):
-		body.health -= 10
+		body.health -= 5
+		$Audio/Hit.play()
 func _on_AnimationPlayer_animation_finished(attack1):
 	is_attacking = false
 

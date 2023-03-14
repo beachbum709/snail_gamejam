@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/ProgressBar.gd" type="Script" id=1]
+[ext_resource path="res://Hey Comic.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 0, 0, 1 )
@@ -13,6 +14,10 @@ bg_color = Color( 0.980392, 0.890196, 0, 1 )
 
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.427451, 0.427451, 0.427451, 0.266667 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 24
+font_data = ExtResource( 2 )
 
 [node name="CanvasLayer" type="Control"]
 
@@ -37,5 +42,13 @@ percent_visible = false
 [node name="Timer" type="Timer" parent="ProgressBar"]
 wait_time = 0.2
 autostart = true
+
+[node name="Label" type="Label" parent="ProgressBar"]
+margin_left = 88.0
+margin_top = -48.0
+margin_right = 244.0
+margin_bottom = -16.0
+custom_fonts/font = SubResource( 5 )
+text = "The Protector"
 
 [connection signal="timeout" from="ProgressBar/Timer" to="ProgressBar" method="_on_Timer_timeout"]

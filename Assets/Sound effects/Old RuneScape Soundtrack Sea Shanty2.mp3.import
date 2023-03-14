@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Old RuneScape Soundtrack Sea Shanty2.mp3-20bf5b1383af3def63571129cff299b9.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound effects/Old RuneScape Soundtrack Sea Shanty2.mp3"
+dest_files=[ "res://.import/Old RuneScape Soundtrack Sea Shanty2.mp3-20bf5b1383af3def63571129cff299b9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

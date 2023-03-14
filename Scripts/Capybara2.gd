@@ -23,6 +23,7 @@ func interact():
 func _process(delta):
 	if text1_bool:
 		text1.percent_visible += 0.005
+		$Talking.play()
 		if text1.percent_visible == 1:
 			$text1timer.start()
 			text1_bool = false
@@ -33,6 +34,7 @@ func _process(delta):
 			text2_bool = true
 	if text2_bool:
 		text2.percent_visible += 0.005
+		$Talking.play()
 		if text2.percent_visible == 1:
 			$text2timer.start()	
 			text2_bool = false

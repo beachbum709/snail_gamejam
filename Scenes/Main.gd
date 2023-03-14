@@ -10,9 +10,12 @@ onready var boss_health_ap = $Healthbar/AnimationPlayer
 func _ready():
 	boss_health.visible = false
 	set_process(false)
+	$Music.play()
 func _process(delta):
 	if $Boss1 != null and not $Boss1.is_dead:
 		boss_health.set_bar_value($Boss1.health)
+	if not $Music.is_playing():
+		$Music.play()
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -24,7 +27,7 @@ func _on_Area2D_body_entered(body):
 		spawn_bool = false
 		var boss_instance = boss1.instance()
 		add_child(boss_instance)
-		boss_instance.position = $Geometry/Boss1map/Area2D/CollisionShape2D.global_position + Vector2(0,-100)
+		boss_instance.position = $Geometry/Area2D/CollisionShape2D.global_position + Vector2(0,-100)
 		set_process(true)
 		boss_health.visible = true
 		boss_health_ap.play("Healthbar spawn")

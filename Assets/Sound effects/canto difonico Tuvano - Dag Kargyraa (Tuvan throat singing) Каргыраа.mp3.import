@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/canto difonico Tuvano - Dag Kargyraa (Tuvan throat singing) Каргыраа.mp3-990572b18a277d5412eec2f3fad426f6.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound effects/canto difonico Tuvano - Dag Kargyraa (Tuvan throat singing) Каргыраа.mp3"
+dest_files=[ "res://.import/canto difonico Tuvano - Dag Kargyraa (Tuvan throat singing) Каргыраа.mp3-990572b18a277d5412eec2f3fad426f6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
